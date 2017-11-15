@@ -1,0 +1,24 @@
+--Lehrveranstaltungen = LVS = subjects;
+--Lehrer = LL = teachers;
+--Zwischentabelle LehrveranstaltungenLehrer = LVGR = lesson;
+
+subjects(
+	id INT,
+	lvnr CHAR, 
+	title VARCHAR,
+	groupsRequired BOOL
+);
+
+teachers(
+	id INT,
+	fName CHAR,
+	lName CHAR,
+	short CHAR	
+);
+
+lesson(
+	id INT,
+	idTeacher INT,
+	hours INT,
+	group CHAR
+);
