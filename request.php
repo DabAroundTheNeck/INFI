@@ -1,13 +1,13 @@
 <?php
 
-    $conn = mysqli_connect("localhost", "", "", "infi");
+    $conn = mysqli_connect("localhost", "root", "", "infi");
 
     //Check connection
     if (!$conn) {
         die("Connection failed, pls try again");
     }
 
-    echo "Connection established";
+    echo "<p>Connection established \n</p>";
 
 
 

@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `INFI`.`subjects` ;
 
 CREATE TABLE IF NOT EXISTS `INFI`.`subjects` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `lvnr` CHAR NOT NULL,
-  `title` CHAR NOT NULL,
+  `lvnr` CHAR(100) NOT NULL,
+  `title` CHAR(100) NOT NULL,
   `groups_required` INT NOT NULL,
   `hours` INT NOT NULL,
   PRIMARY KEY (`id`))
@@ -39,9 +39,9 @@ DROP TABLE IF EXISTS `INFI`.`teachers` ;
 
 CREATE TABLE IF NOT EXISTS `INFI`.`teachers` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `f_name` CHAR NOT NULL,
-  `l_name` CHAR NOT NULL,
-  `short` CHAR NOT NULL,
+  `f_name` CHAR(100) NOT NULL,
+  `l_name` CHAR(100) NOT NULL,
+  `short` CHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `INFI`.`lessons` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_teachers` INT NOT NULL,
   `hours` INT NOT NULL,
-  `group` CHAR NOT NULL,
+  `group` CHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_lessons_teachers1_idx` (`id_teachers` ASC),
   CONSTRAINT `fk_lessons_teachers1`
