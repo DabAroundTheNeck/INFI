@@ -65,32 +65,6 @@ CREATE TABLE IF NOT EXISTS `INFI`.`lessons` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `INFI`.`lessons_has_teachers`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `INFI`.`lessons_has_teachers` ;
-
-CREATE TABLE IF NOT EXISTS `INFI`.`lessons_has_teachers` (
-  `lessons_id` INT NOT NULL,
-  `lessons_id_teachers` INT NOT NULL,
-  `teachers_id` INT NOT NULL,
-  PRIMARY KEY (`lessons_id`, `lessons_id_teachers`, `teachers_id`),
-  INDEX `fk_lessons_has_teachers_teachers1_idx` (`teachers_id` ASC),
-  INDEX `fk_lessons_has_teachers_lessons_idx` (`lessons_id` ASC, `lessons_id_teachers` ASC),
-  CONSTRAINT `fk_lessons_has_teachers_lessons`
-    FOREIGN KEY (`lessons_id`)
-    REFERENCES `INFI`.`lessons` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_lessons_has_teachers_teachers1`
-    FOREIGN KEY (`teachers_id`)
-    REFERENCES `INFI`.`teachers` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
