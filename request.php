@@ -1,6 +1,6 @@
 <?php
 
-    $conn = mysqli_connect("192.168.178.28:3306", "root", "nicholas paranoia cucumber", "INFI");
+    $conn = mysqli_connect("80.123.206.40:3306", "root", "nicholas paranoia cucumber", "INFI");
 
     //Check connection
     if (!$conn) {
@@ -13,7 +13,7 @@
 
     $join = "INNER JOIN ON";
 
-    $sql = "SELECT * FROM subjects" . $join;
+    $sql = "SELECT * FROM subjects";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
