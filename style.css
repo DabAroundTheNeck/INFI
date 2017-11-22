@@ -22,3 +22,12 @@ h1, h2, h3, h4, h5, h6 {
     width: 80%;
     padding: 1.2rem
 }
+
+button {
+    border: 0;
+    color: white;
+    background-color: #0a3085;
+    border-radius: 100%;
+    width: 1em;
+    height: 1em;
+}
