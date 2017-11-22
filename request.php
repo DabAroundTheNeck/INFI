@@ -1,6 +1,6 @@
 <?php
 
-    $conn = mysqli_connect("localhost", "root", "", "infi");
+    $conn = mysqli_connect("80.123.206.40:3306", "root", "nicholas paranoia cucumber", "infi");
 
     //Check connection
     if (!$conn) {
@@ -11,7 +11,7 @@
 
 
 
-    $sql = "SELECT * FROM subjects";
+    $sql = "SELECT * FROM lessons";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
