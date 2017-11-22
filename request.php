@@ -24,6 +24,8 @@
 
     } else {
         echo "No results";
+        echo mysqli_error();
+        echo $result;
     }
 
     $conn->close();
