@@ -7,11 +7,13 @@
         die("Connection failed, pls try again");
     }
 
-    echo "<p>Connection established \n</p>";
+    echo "<h1> Lehrveranstaltungsvisualisierungswerkzeuginternetapplikationsfrontend </h1>";
 
+    echo '<p style="background-color: blue">Connection established</p>';
 
+    $join = "INNER JOIN ON";
 
-    $sql = "SELECT * FROM lessons";
+    $sql = "SELECT * FROM subjects" . $join;
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -19,11 +21,10 @@
         while($row = mysqli_fetch_assoc($result)) {
             echo "id: " . $row["id"]. " - Name: " . $row["lvnr"]. " " . $row["title"]. "<br>";
         }
+
     } else {
-        echo "0 results";
+        echo "No results";
     }
-
-
 
     $conn->close();
 
