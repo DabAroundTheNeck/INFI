@@ -8,7 +8,7 @@ function fillData() {
     subjectsRequest.send(null);
     subjectsRequest.onreadystatechange = function () {
         if (subjectsRequest.readyState === DONE) {
-            if (subjectsRequest.status === OK)
+            if (subjectsRequest.status === OK) {
                 document.getElementById("subjectContainer").innerText = subjectsRequest.responseText;
             } else {
                 console.log('Error: ' + xhr.status); // An error occurred during the request.
