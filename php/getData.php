@@ -9,7 +9,7 @@
     $pdo = create_pdo();
 
     try {
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION, PDO::FETCH_ASSOC);
         $pdo->beginTransaction();
 
         $data_stmnt = $pdo->prepare("select * from subjects");
@@ -20,7 +20,7 @@
         $data_stmnt->closeCursor();
 
         $response = array(
-          'response' => SUCCESS,
+          'status' => SUCCESS,
           'subjects' => $data
         );
 

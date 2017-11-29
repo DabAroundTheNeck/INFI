@@ -14,10 +14,10 @@ function fillData() {
                 console.log(parsedResponse);
 
                 for (var i in parsedResponse) {
-                    document.getElementById('subjectContainer').insertAdjacentHTML('afterbegin', '<div>' + parsedResponse[i] + '</div>');
+                    document.getElementById('subjectContainer').insertAdjacentHTML('afterbegin', '<div>' + parsedResponse[i].lvnr + '</div>');
                 }
             } else {
-                console.log('Error: ' + xhr.status); // An error occurred during the request.
+                console.log('Error: ' + subjectsRequest.status); // An error occurred during the request.
             }
         }
     };
