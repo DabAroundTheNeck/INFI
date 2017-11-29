@@ -4,7 +4,7 @@ function fillData() {
 
 
     var subjectsRequest = new XMLHttpRequest();
-    subjectsRequest.open('GET', 'send-ajax-data.php');
+    subjectsRequest.open('GET', './php/getData.php');
     subjectsRequest.send(null);
     subjectsRequest.onreadystatechange = function () {
         if (subjectsRequest.readyState === DONE) {
