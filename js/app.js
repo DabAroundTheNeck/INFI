@@ -8,8 +8,14 @@ function fillData() {
     subjectsRequest.send(null);
     subjectsRequest.onreadystatechange = function () {
         if (subjectsRequest.readyState === DONE) {
-            if (subjectsRequest.status === OK)
-                document.getElementById("subjectContainer").innerText = subjectsRequest.responseText;
+            if (subjectsRequest.status === OK) {
+                console.log(subjectsRequest.responseText);
+                let parsedResponse = JSON.parse(subjectsRequest.responseText);
+                console.log(parsedResponse);
+
+                for (var i in parsedResponse) {
+                    document.getElementById('subjectContainer').insertAdjacentHTML('afterbegin', '<div>' + parsedResponse[i] + '</div>');
+                }
             } else {
                 console.log('Error: ' + xhr.status); // An error occurred during the request.
             }
