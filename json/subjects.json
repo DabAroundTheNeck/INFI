@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Project",
+    "description": "The schema for recieving all subjects",
+    "type": "object",
+    "properties": {
+        "status": {
+            "type": "integer"
+          },
+        "subjects": {
+            "type": "array",
+            "items": {
+                "lvnr": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true
+                },
+                "title": {
+                  "type": "string"
+                },
+                "groups_required": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true
+                },
+                "lessons": {
+                  "type": "array",
+                  "hours":{
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true
+                  },
+                  "group":{
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true
+                  },
+                  "teacher":{
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": ["subjects", "status"]
+}
