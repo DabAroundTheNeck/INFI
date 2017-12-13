@@ -13,17 +13,19 @@
         $pdo->beginTransaction();
 
         $post_data = file_get_contents("php://input");
-        $post_lvnr = json_decode($post_data)->{'lvnr'};
-        $post_title = json_decode($post_data)->{'title'};
-        $post_groups = json_decode($post_data)->{'groups'};
+        $post_teacher_id = json_decode($post_data)->{'teacher'};
+        $post_subject_id = json_decode($post_data)->{'subject'};
+        $post_hours = json_decode($post_data)->{'hours'};
+        $post_group = json_decode($post_data)->{'groups'};
 
-        $subjects_stmnt = $pdo->prepare("insert into subjects(lvnr, title, groupsRequired) values(:lvnr, :title, :groupsRequired)");
-        $subjects_stmnt->bindParam(':lvnr', $post_lvnr);
-        $subjects_stmnt->bindParam(':title', $post_title);
-        $subjects_stmnt->bindParam(':groupsRequired', $post_groups);
+        $lessons_stmnt = $pdo->prepare("insert into lessons(id_teachers, id_subjects, hours, group) values(:id_teachers, :id_subjects, :hours, :group)");
+        $lessons_stmnt->bindParam(':id_teachers', $post_teacher_id);
+        $lessons_stmnt->bindParam(':id_subjects', $post_subject_id);
+        $lessons_stmnt->bindParam(':hours', $post_hours);
+        $lessons_stmnt->bindParam(':group', $post_groups);
 
-        $subjects_stmnt->execute();
-        $subjects_stmnt->closeCursor();
+        $lessons_stmnt->execute();
+        $lessons_stmnt->closeCursor();
 
 
         $response = array(
