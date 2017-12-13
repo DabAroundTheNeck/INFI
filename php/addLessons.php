@@ -12,28 +12,22 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->beginTransaction();
 
-        $subjects_stmnt = $pdo->prepare("select * from subjects");
+        $post_data = file_get_contents("php://input");
+        $post_lvnr = json_decode($post_data)->{'lvnr'};
+        $post_title = json_decode($post_data)->{'title'};
+        $post_groups = json_decode($post_data)->{'groups'};
+
+        $subjects_stmnt = $pdo->prepare("insert into subjects(lvnr, title, groupsRequired) values(:lvnr, :title, :groupsRequired)");
+        $subjects_stmnt->bindParam(':lvnr', $post_lvnr);
+        $subjects_stmnt->bindParam(':title', $post_title);
+        $subjects_stmnt->bindParam(':groupsRequired', $post_groups);
+
         $subjects_stmnt->execute();
-        $subjects = $subjects_stmnt->fetchAll();
         $subjects_stmnt->closeCursor();
 
 
-        $teacher_stmnt = $pdo->prepare("select * from subjects");
-        $teacher_stmnt->execute();
-        $teachers = $teacher_stmnt->fetchAll();
-        $teacher_stmnt->closeCursor();
-
-        $lesson_stmnt = $pdo->prepare("select * from lessons");
-        $lesson_stmnt->execute();
-        $lessons = $lesson_stmnt->fetchAll();
-        $lesson_stmnt->closeCursor();
-
-
         $response = array(
-          'status' => SUCCESS,
-          'subjects' => $subjects,
-          'teachers' => $teachers,
-          'lessons' => $lessons
+          'status' => SUCCESS
         );
 
         $pdo->commit();
