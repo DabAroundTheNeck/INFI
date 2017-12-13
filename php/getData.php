@@ -12,16 +12,28 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->beginTransaction();
 
-        $data_stmnt = $pdo->prepare("select * from subjects");
+        $subjects_stmnt = $pdo->prepare("select * from subjects");
+        $subjects_stmnt->execute();
+        $subjects = $subjects_stmnt->fetchAll();
+        $subjects_stmnt->closeCursor();
 
-        $data_stmnt->execute();
-        $data = $data_stmnt->fetchAll();
 
-        $data_stmnt->closeCursor();
+        $teacher_stmnt = $pdo->prepare("select * from subjects");
+        $teacher_stmnt->execute();
+        $teachers = $teacher_stmnt->fetchAll();
+        $teacher_stmnt->closeCursor();
+
+        $lesson_stmnt = $pdo->prepare("select * from lessons");
+        $lesson_stmnt->execute();
+        $lessons = $lesson_stmnt->fetchAll();
+        $lesson_stmnt->closeCursor();
+
 
         $response = array(
           'status' => SUCCESS,
-          'subjects' => $data
+          'subjects' => $subjects,
+          'teachers' => $teachers,
+          'lessons' => $lessons
         );
 
         $pdo->commit();
@@ -32,57 +44,4 @@
     }
 
     echo json_encode($response);
-
-/*
-    //Check connection
-    if (!$conn) {
-        die("Connection failed, pls try again");
-    }
-    $sql = "SELECT * FROM subjects";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "id: " . $row["id"]. " - Name: " . $row["lvnr"]. " " . $row["title"]. "<button> + </button>" . "<br>";
-        }
-    } else {
-        echo "No results";
-        echo mysqli_error();
-        echo $result;
-    }
-    <?php
-        $sql = "SELECT * FROM teachers";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            // output data of each row
-            while($row = mysqli_fetch_assoc($result)) {
-                echo "id: " . $row["id"]. " - Name: " . $row["f_name"]. " " . $row["l_name"]. " Kürzel " . $row["short"] . "<button> + </button>" . "<br>";
-            }
-
-        } else {
-            echo "No results";
-            echo mysqli_error();
-            echo $result;
-        }
-    ?>
-
-    <?php
-        $sql = "SELECT * FROM lessons";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            // output data of each row
-            while($row = mysqli_fetch_assoc($result)) {
-                echo "id: " . $row["id"]. " - Teacher: " . $row["id_teachers"]. " Hours " . $row["hours"] . " Group " . $row["group"] . " Subject: " . $row["id_subjecs"] . "<button> + </button>" . "<br>";
-            }
-
-        } else {
-            echo "No results";
-            echo mysqli_error();
-            echo $result;
-        }
-    ?>
-    */
 ?>
