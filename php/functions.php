@@ -1,6 +1,10 @@
 <?php
     //Creating a PDO Connection
+    $config = parse_ini_file("../config/config.ini");
+
     function create_pdo() {
-        return new PDO('mysql:host=80.123.206.40:3306;dbname=INFI;charset=utf8', 'root', 'nicholas paranoia cucumber');
+        $config = $GLOBALS['config'];
+
+        return new PDO('mysql:host='.$config['dbHost'].';dbname='.$config['dbName'].';charset=utf8', $config['dbUser'], $config['dbPass']);
     }
 ?>
