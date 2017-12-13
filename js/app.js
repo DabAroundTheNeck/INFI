@@ -39,3 +39,37 @@ function addSubject() {
         }
     };
 }
+
+function addTeacher() {
+    var subjectsRequest = new XMLHttpRequest();
+    subjectsRequest.open('Post', './php/addTeacher.php');
+    loginRequest.send('{"fName":"Vorname","lName":"Nachname","short":"VRN"}');
+    subjectsRequest.onreadystatechange = function () {
+        if (subjectsRequest.readyState === DONE) {
+            if (subjectsRequest.status === OK) {
+                console.log(subjectsRequest.responseText);
+                let parsedResponse = JSON.parse(subjectsRequest.responseText);
+                console.log(parsedResponse);
+            } else {
+                console.log('Error: ' + subjectsRequest.status); // An error occurred during the request.
+            }
+        }
+    };
+}
+
+function addLesson() {
+    var subjectsRequest = new XMLHttpRequest();
+    subjectsRequest.open('Post', './php/addLesson.php');
+    loginRequest.send('{"teacher":"0","subject":"0","hours":"20", "group":"gruppe"}');
+    subjectsRequest.onreadystatechange = function () {
+        if (subjectsRequest.readyState === DONE) {
+            if (subjectsRequest.status === OK) {
+                console.log(subjectsRequest.responseText);
+                let parsedResponse = JSON.parse(subjectsRequest.responseText);
+                console.log(parsedResponse);
+            } else {
+                console.log('Error: ' + subjectsRequest.status); // An error occurred during the request.
+            }
+        }
+    };
+}
