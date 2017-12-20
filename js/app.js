@@ -63,11 +63,44 @@ dataRequest.onreadystatechange = function () {
             let parsedResponse = JSON.parse(dataRequest.responseText);
             console.log(parsedResponse);
 
+            var subjects = [];
+
             for (var i in parsedResponse.subjects) {
-                document.getElementById('subjects').insertAdjacentHTML('beforeend', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><div class="half"><b>Subject: </b><span class="name">Subjectname</span></div><div class="half"><b>Criteria: </b><span class="timecriteria"> 5 </span></div><div><div class="lessonContainer"><div class="lesson"></div><button type="button" name="button" onclick="addLesson();"> + </button></div></div>');
+                var x = 0;
+                for (var j in subjects) {
+                    if (parsedResponse.subjects[i].id == subjects[j].id) {
+                        x++;
+                    }
+                }
+                if (x == 0) {
+                    subjects[subjects.length] = {id:parsedResponse.subjects[i].id, lvnr:parsedResponse.subjects[i].lnvr, title:parsedResponse.subjects[i].title, groups_required:parsedResponse.subjects[i].groups_required, lessons:[{hours:parsedResponse.subjects[i].hours, short:parsedResponse.subjects[i].short, group:parsedResponse.subjects[i].group}]};
+                } else {
+                    for (var j in subjects) {
+                        if (parsedResponse.subjects[i].id == subjects[j].id) {
+                            subjects[j].lessons[subjects[j].lessons.length] = {hours:parsedResponse.subjects[i].hours, short:parsedResponse.subjects[i].short, group:parsedResponse.subjects[i].group};
+                        }
+                    }
+                }
+            }
+
+            console.log(subjects);
+
+            for (var i in subjects) {
+                appendSubject(document.getElementById('subjects'), subjects[i]);
             }
         } else {
             console.log('Error: ' + dataRequest.status); // An error occurred during the request.
         }
     }
 };
+
+function appendSubject(element, subject) {
+    element.insertAdjacentHTML('beforeend', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><div class="half"><b>Subject: </b><span class="name">' + subject.title + '</span></div><div class="half"><b>Criteria: </b><span class="timecriteria"> 5 </span></div></div><div class="lessonContainer"><div class="lesson" id="subject'+subject.id+'"></div><button type="button" name="button" onclick="addLesson();"> + </button></div></div>');
+    for (var i = 0; i < subject.lessons.length; i++) {
+        appendLesson(document.getElementById('subject'+subject.id),subject.lessons[i]);
+    }
+}
+
+function appendLesson(element, lesson) {
+    element.insertAdjacentHTML('beforeend', '');
+}
