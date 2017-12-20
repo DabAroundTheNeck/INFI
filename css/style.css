@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+.centered {
+    text-align: center;
+}
+
 .info > button {
     font-family: 'Roboto', sans-serif;
     border: 0;
@@ -99,5 +103,24 @@ button:hover {
 }
 
 .subject .lessonContainer {
+    padding: 0.3em;
+}
+
+.lesson {
+    width: 10em;
+}
+
+.lesson > div {
+    position: relative;
+}
+
+
+.row {
+    width: 100%;
+}
+
+.lesson .teacherrow {
+    color: white;
+    background-color: #0a3085;
     padding: 0.3em;
 }
