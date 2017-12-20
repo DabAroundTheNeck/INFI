@@ -16,7 +16,7 @@
         $subjectsLessons_stmnt->execute();
         $subjects = $subjectsLessons_stmnt->fetchAll();
         $subjectsLessons_stmnt->closeCursor();
-*/
+        
         $response = array(
           'status' => SUCCESS,
           'subjects' => $subjects,
