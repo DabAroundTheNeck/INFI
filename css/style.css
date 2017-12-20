@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
 }
 
@@ -16,14 +15,13 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     line-height: 120%;
     font-family: 'Roboto', sans-serif;
-
 }
 
 .centered {
     text-align: center;
 }
 
-.info > button {
+.info>button {
     font-family: 'Roboto', sans-serif;
     border: 0;
     color: white;
@@ -36,11 +34,11 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
 }
 
-.info > button:hover {
+.info>button:hover {
     background-color: #a52950;
 }
 
-.subjectContainer > button {
+.subjectContainer>button {
     font-family: 'Roboto', sans-serif;
     border: 0;
     color: white;
@@ -50,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 1.5em;
 }
 
-.lessonContainer > button {
+.lessonContainer>button {
     font-family: 'Roboto', sans-serif;
     border: 0;
     color: white;
@@ -75,7 +73,6 @@ button:hover {
     width: 100%;
 }
 
-
 .subject {
     background-color: #ffffff;
     margin-bottom: 1em;
@@ -98,9 +95,7 @@ button:hover {
     font-family: 'Roboto', sans-serif;
 }
 
-.subject .info .half .timecriteria {
-
-}
+.subject .info .half .timecriteria {}
 
 .subject .lessonContainer {
     padding: 0.3em;
@@ -110,10 +105,9 @@ button:hover {
     width: 10em;
 }
 
-.lesson > div {
+.lesson>div {
     position: relative;
 }
-
 
 .row {
     width: 100%;
