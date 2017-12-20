@@ -1,4 +1,4 @@
-DROP PROCEDURE `getSubjectsLessons`;
+DROP PROCEDURE if exists `getSubjectsLessons`;
 CREATE PROCEDURE `getSubjectsLessons`()
 NOT DETERMINISTIC
 READS SQL DATA
@@ -8,10 +8,10 @@ SELECT subjects.id, subjects.lvnr, subjects.title, subjects.groups_required, tea
     ON subjects.id = lessons.id_subjects
   INNER JOIN teachers
     ON lessons.id_teachers = teachers.id
-      ORDER BY `subjects`.`lvnr` ASC
+      ORDER BY `subjects`.`lvnr` ASC;
 
 
-DROP PROCEDURE `insertTeacher`;
+DROP PROCEDURE if exists `insertTeacher`;
 CREATE PROCEDURE `insertTeacher`(
   IN `f_name` CHAR(100),
   IN `l_name` CHAR(100),
@@ -23,7 +23,7 @@ CREATE PROCEDURE `insertTeacher`(
 INSERT INTO `teachers` (`f_name`, `l_name`, `short`) VALUES (l_name, f_name, short);
 
 
-DROP PROCEDURE `insertSubjects`;
+DROP PROCEDURE if exists `insertSubjects`;
 CREATE PROCEDURE `insertSubjects`(
   IN `lvnr` CHAR(100),
   IN `title` CHAR(100),
@@ -35,7 +35,7 @@ CREATE PROCEDURE `insertSubjects`(
 INSERT INTO `subjects` (`lvnr`, `title`, `groups_required`) VALUES (lvnr, title, groups_required);
 
 
-DROP PROCEDURE `insertLessons`;
+DROP PROCEDURE if exists `insertLessons`;
 CREATE PROCEDURE `insertLessons`(
   IN `id_teachers` INT(11),
   IN `hours` INT(11),

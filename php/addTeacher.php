@@ -13,17 +13,17 @@
         $pdo->beginTransaction();
 
         $post_data = file_get_contents("php://input");
-        $post_lvnr = json_decode($post_data)->{'lvnr'};
-        $post_title = json_decode($post_data)->{'title'};
-        $post_groups = json_decode($post_data)->{'groups'};
+        $post_f_name = json_decode($post_data)->{'fName'};
+        $post_l_name = json_decode($post_data)->{'lName'};
+        $post_short = json_decode($post_data)->{'short'};
 
-        $subjects_stmnt = $pdo->prepare("insert into subjects(lvnr, title, groupsRequired) values(:lvnr, :title, :groupsRequired)");
-        $subjects_stmnt->bindParam(':lvnr', $post_lvnr);
-        $subjects_stmnt->bindParam(':title', $post_title);
-        $subjects_stmnt->bindParam(':groupsRequired', $post_groups);
+        $teachers_stmnt = $pdo->prepare("insert into teachers(f_name, l_name, short) values(:f_name, :l_name, :short)");
+        $teachers_stmnt->bindParam(':f_name', $post_f_name);
+        $teachers_stmnt->bindParam(':l_name', $post_l_name);
+        $teachers_stmnt->bindParam(':short', $post_short);
 
-        $subjects_stmnt->execute();
-        $subjects_stmnt->closeCursor();
+        $teachers_stmnt->execute();
+        $teachers_stmnt->closeCursor();
 
 
         $response = array(

@@ -9,25 +9,95 @@ html, body {
     min-width: 100%;
     min-height: 100%;
     font-family: 'Open Sans', sans-serif;
+    background-color: #dddddd;
 }
 
 h1, h2, h3, h4, h5, h6 {
     width: 100%;
     line-height: 120%;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Roboto', sans-serif;
+
 }
 
-.container {
-    margin: auto;
-    width: 80%;
-    padding: 1.2rem
+.info > button {
+    font-family: 'Roboto', sans-serif;
+    border: 0;
+    color: white;
+    width: 2em;
+    height: 100%;
+    font-size: 1.5em;
+    background-color: #0a3085;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
-button {
+.info > button:hover {
+    background-color: #a52950;
+}
+
+.subjectContainer > button {
+    font-family: 'Roboto', sans-serif;
+    border: 0;
+    color: white;
+    background-color: #0a3085;
+    width: 100%;
+    font-size: 1.5em;
+    height: 1.5em;
+}
+
+.lessonContainer > button {
+    font-family: 'Roboto', sans-serif;
     border: 0;
     color: white;
     background-color: #0a3085;
     border-radius: 100%;
-    width: 1em;
-    height: 1em;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 2em;
+}
+
+button:hover {
+    background-color: #2a50a5;
+    cursor: pointer;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.subjectContainer {
+    width: 100%;
+}
+
+
+.subject {
+    background-color: #ffffff;
+    margin-bottom: 1em;
+}
+
+.subject .info {
+    color: white;
+    background-color: #0a3085;
+    padding: 0.3em;
+    position: relative;
+}
+
+.subject .info .half {
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+.subject .info .half .name {
+    font-family: 'Roboto', sans-serif;
+}
+
+.subject .info .half .timecriteria {
+
+}
+
+.subject .lessonContainer {
+    padding: 0.3em;
 }
