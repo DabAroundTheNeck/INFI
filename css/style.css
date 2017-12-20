@@ -9,6 +9,7 @@ html, body {
     min-width: 100%;
     min-height: 100%;
     font-family: 'Open Sans', sans-serif;
+    background-color: #eeeeee;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -18,12 +19,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 button {
+    font-family: 'Roboto', sans-serif;
     border: 0;
     color: white;
     background-color: #0a3085;
     border-radius: 100%;
-    width: 1em;
-    height: 1em;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 2em;
 }
 
 .container {
@@ -37,11 +40,15 @@ button {
 
 
 .subject {
-
+    background-color: #ffffff;
 }
 
-.subject .name {
+.subject .info .name {
     font-family: 'Roboto', sans-serif;
+}
+
+.subject .info .timecriteria {
+    
 }
 
 .subject .lessonContainer {
