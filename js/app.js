@@ -64,7 +64,7 @@ dataRequest.onreadystatechange = function () {
             console.log(parsedResponse);
 
             for (var i in parsedResponse.subjects) {
-                document.getElementById('subjectContainer').insertAdjacentHTML('afterbegin', '<div>' + parsedResponse.subjects[i].lvnr + ' ' + parsedResponse.subjects[i].title + ' ' + parsedResponse.subjects[i].groups_required + '</div>');
+                
             }
         } else {
             console.log('Error: ' + dataRequest.status); // An error occurred during the request.

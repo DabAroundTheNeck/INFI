@@ -12,26 +12,14 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $pdo->beginTransaction();
 
-        $subjects_stmnt = $pdo->prepare("CALL getSubjectsLessons()");
-        $subjects_stmnt->execute();
-        $subjects = $subjects_stmnt->fetchAll();
-        $subjects_stmnt->closeCursor();
-/*
-        $teachers_stmnt = $pdo->prepare("CALL getTeachersLessons()");
-        $teachers_stmnt->execute();
-        $teachers = $teachers_stmnt->fetchAll();
-        $teachers_stmnt->closeCursor();
-
-        $lessons_stmnt = $pdo->prepare("CALL getLessonsLessons()");
-        $lessons_stmnt->execute();
-        $lessons = $lessons_stmnt->fetchAll();
-        $lessons_stmnt->closeCursor();
-*/
+        $subjectsLessons_stmnt = $pdo->prepare("CALL getSubjectsLessons()");
+        $subjectsLessons_stmnt->execute();
+        $subjects = $subjectsLessons_stmnt->fetchAll();
+        $subjectsLessons_stmnt->closeCursor();
+        
         $response = array(
           'status' => SUCCESS,
           'subjects' => $subjects,
-          //'teachers' => $teachers,
-          //'lessons' => $lessons
         );
 
         $pdo->commit();
