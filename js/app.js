@@ -102,5 +102,5 @@ function appendSubject(element, subject) {
 }
 
 function appendLesson(element, lesson) {
-    element.insertAdjacentHTML('beforeend', '');
+    element.insertAdjacentHTML('beforeend', '<div class="lesson centered"><div class="row teacherrow"><span class="teacher">'+lesson.short+'</span></div><div class="row"><span class="half">Group </span><span class="half">'+lesson.group+'</span</div></div>');
 }
