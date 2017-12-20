@@ -7,8 +7,6 @@
 
         <link href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans" rel="stylesheet">
 
-        <script src="js/app.js"></script>
-
         <title>Lehrveranstaltungsvisualisierungswerkzeuginternetapplikationsfrontend</title>
     </head>
     <body>
@@ -16,15 +14,20 @@
         <main class="container">
             <h1>LVF</h1>
 
-            <div class="subjectContainer">
-
+            <div id="subjectContainer" class="subjectContainer">
+                <!-- Start of subject prototype-->
                 <div class="subject">
                     <div class="info">
-                        <b>Subject</b>
-                        <span class="name">Subjectname</span>
-                        <span class=""></span>
+                        <button type="button" name="button" class="closeButton">x</button>
+                        <div class="half">
+                            <b>Subject: </b>
+                            <span class="name">Subjectname</span>
+                        </div>
+                        <div class="half">
+                            <b>Criteria: </b>
+                            <span class="timecriteria"> 5 </span>
+                        </div>
                     </div>
-
 
                     <div class="lessonContainer">
                         <div class="lesson">
@@ -33,9 +36,10 @@
 
                         <button type="button" name="button"> + </button>
                     </div>
-
                 </div>
+                <!-- End of subject prototype-->
 
+                <button type="button" name="button"> Add Subject </button>
 
             </div>
 
