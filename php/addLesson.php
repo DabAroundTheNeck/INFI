@@ -16,13 +16,13 @@
         $post_teacher_id = json_decode($post_data)->{'teacher'};
         $post_subject_id = json_decode($post_data)->{'subject'};
         $post_hours = json_decode($post_data)->{'hours'};
-        $post_group = json_decode($post_data)->{'groups'};
+        $post_group = json_decode($post_data)->{'group'};
 
-        $lessons_stmnt = $pdo->prepare("insert into lessons(id_teachers, id_subjects, hours, group) values(:id_teachers, :id_subjects, :hours, :group)");
+        $lessons_stmnt = $pdo->prepare("CALL insertLessons(:id_teachers, :hours, :group, :id_subjects)");
         $lessons_stmnt->bindParam(':id_teachers', $post_teacher_id);
         $lessons_stmnt->bindParam(':id_subjects', $post_subject_id);
         $lessons_stmnt->bindParam(':hours', $post_hours);
-        $lessons_stmnt->bindParam(':group', $post_groups);
+        $lessons_stmnt->bindParam(':group', $post_group);
 
         $lessons_stmnt->execute();
         $lessons_stmnt->closeCursor();

@@ -38,7 +38,7 @@ function addTeacher() {
 function addLesson() {
     var lessonRequest = new XMLHttpRequest();
     lessonRequest.open('Post', './php/addLesson.php');
-    lessonRequest.send('{"teacher":"0","subject":"0","hours":"20", "group":"gruppe"}');
+    lessonRequest.send('{"teacher":"1","subject":"1","hours":"20", "group":"gruppe"}');
     lessonRequest.onreadystatechange = function () {
         if (lessonRequest.readyState === DONE) {
             if (lessonRequest.status === OK) {
@@ -64,7 +64,7 @@ dataRequest.onreadystatechange = function () {
             console.log(parsedResponse);
 
             for (var i in parsedResponse.subjects) {
-                
+                document.getElementById('subjects').insertAdjacentHTML('beforeend', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><div class="half"><b>Subject: </b><span class="name">Subjectname</span></div><div class="half"><b>Criteria: </b><span class="timecriteria"> 5 </span></div><div><div class="lessonContainer"><div class="lesson"></div><button type="button" name="button" onclick="addLesson();"> + </button></div></div>');
             }
         } else {
             console.log('Error: ' + dataRequest.status); // An error occurred during the request.
