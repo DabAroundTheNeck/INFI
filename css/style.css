@@ -25,3 +25,25 @@ button {
     width: 1em;
     height: 1em;
 }
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.subjectContainer {
+    width: 100%;
+}
+
+
+.subject {
+
+}
+
+.subject .name {
+    font-family: 'Roboto', sans-serif;
+}
+
+.subject .lessonContainer {
+
+}
