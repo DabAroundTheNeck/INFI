@@ -14,30 +14,38 @@
         <main class="container">
             <h1>LVF</h1>
 
-            <div id="subjectContainer" class="subjectContainer">
-                <!-- Start of subject prototype-->
-                <div class="subject">
-                    <div class="info">
-                        <button type="button" name="button" class="closeButton">x</button>
-                        <div class="half">
-                            <b>Subject: </b>
-                            <span class="name">Subjectname</span>
+            <div class="subjectContainer">
+
+                <div id="subjects" class="subjects">
+                    <!-- Start of subject prototype-->
+                    <div class="subject">
+                        <div class="info">
+                            <button type="button" name="button" class="closeButton">x</button>
+                            <div class="half">
+                                <b>Subject: </b>
+                                <span class="name">Subjectname</span>
+                            </div>
+                            <div class="half">
+                                <b>Criteria: </b>
+                                <span class="timecriteria"> 5 </span>
+                            </div>
                         </div>
-                        <div class="half">
-                            <b>Criteria: </b>
-                            <span class="timecriteria"> 5 </span>
+
+                        <div class="lessonContainer">
+                            <div class="lessons">
+                                <!-- Start of lesson prototype -->
+
+                                <div class="lesson">
+
+                                </div>
+                                <!-- End of lesson prototype -->
+                            </div>
+
+                            <button type="button" name="button" onclick="addLesson();"> + </button>
                         </div>
                     </div>
-
-                    <div class="lessonContainer">
-                        <div class="lesson">
-
-                        </div>
-
-                        <button type="button" name="button" onclick="addLesson();"> + </button>
-                    </div>
+                    <!-- End of subject prototype -->
                 </div>
-                <!-- End of subject prototype-->
 
                 <button type="button" name="button" onclick="addSubject();"> Add Subject </button>
 
