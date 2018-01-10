@@ -103,9 +103,12 @@ button:hover {
 
 .lesson {
     width: 10em;
+    display: flex;
+    float: left;
 }
 
 .lesson>div {
+    display: block;
     position: relative;
 }
 
