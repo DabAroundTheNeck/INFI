@@ -111,13 +111,12 @@ dataRequest.onreadystatechange = function() {
 };
 
 function appendSubject(element, subject) {
-	element.insertAdjacentHTML('beforeend', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><div class="half"><b>Subject: </b><span class="name">' + subject.title + '</span></div><div class="half"><b>Criteria: </b><span class="timecriteria"> 5 </span></div></div><div class="lessonContainer" id="subject' + subject.id + '"></div></div>');
+	element.insertAdjacentHTML('beforeend', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><div class="half"><b>Subject: </b><span class="name">' + subject.title + '</span></div><div class="half"><b>Criteria: </b><span class="timecriteria"> 5 </span></div></div><div class="lessonContainer"><div class="lesson" id="subject' + subject.id + '"></div><button type="button" name="button" onclick="addLesson('+subject.id+');"> + </button></div></div>');
 	for (var i = 0; i < subject.lessons.length; i++) {
 		appendLesson(document.getElementById('subject' + subject.id), subject.lessons[i]);
 	}
-	document.getElementById('subject' + subject.id).insertAdjacentHTML('beforeend', '<button type="button" name="button" onclick="addLesson('+subject.id+');"> + </button>');
 }
 
 function appendLesson(element, lesson) {
-	element.insertAdjacentHTML('beforeend', '<div class="lessons"><div class="lesson centered"><div class="row teacherrow"><span class="teacher">' + lesson.short + '</span></div><div class="row"><span class="half">Group </span><span class="half">' + lesson.group + '</span</div></div></div>');
+	element.insertAdjacentHTML('beforeend', '<div class="lesson centered"><div class="row teacherrow"><span class="teacher">' + lesson.short + '</span></div><div class="row"><span class="half">Group </span><span class="half">' + lesson.group + '</span</div></div>');
 }
