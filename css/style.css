@@ -49,6 +49,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lessonContainer>button {
+    display: inline-block;
     font-family: 'Roboto', sans-serif;
     border: 0;
     color: white;
@@ -79,6 +80,8 @@ button:hover {
 }
 
 .subject .info {
+    width: 300px;
+    display: inline-block;
     color: white;
     background-color: #0a3085;
     padding: 0.3em;
@@ -99,6 +102,7 @@ button:hover {
 
 .subject .lessonContainer {
     padding: 0.3em;
+    display: inline-block;
 }
 
 .lesson {
