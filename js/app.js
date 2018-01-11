@@ -36,15 +36,28 @@ function addTeacher() {
 }
 
 function addLesson(subjectId) {
+
+	var hours = 20;
+	var group = "gruppe";
+
 	var lessonRequest = new XMLHttpRequest();
 	lessonRequest.open('Post', './php/addLesson.php');
-	lessonRequest.send('{"teacher":"1","subject":"'+subjectId+'","hours":"20", "group":"gruppe"}');
+	lessonRequest.send('{"teacher":"1","subject":"'+subjectId+'","hours":"'+hours+'", "group":"'+group+'"}');
 	lessonRequest.onreadystatechange = function() {
 		if (lessonRequest.readyState === DONE) {
 			if (lessonRequest.status === OK) {
 				console.log(lessonRequest.responseText);
 				let parsedResponse = JSON.parse(lessonRequest.responseText);
 				console.log(parsedResponse);
+
+				var lesson = {
+					hours: hours,
+					group: group,
+					short: parsedResponse.short.short
+				}
+
+				appendLesson(document.getElementById('subject' + subjectId), lesson);
+
 			} else {
 				console.log('Error: ' + lessonRequest.status); // An error occurred during the request.
 			}
@@ -52,63 +65,67 @@ function addLesson(subjectId) {
 	};
 }
 
-var dataRequest = new XMLHttpRequest();
-dataRequest.open('Get', './php/getData.php');
-dataRequest.send();
-//loginRequest.send('{"e":"email","pw":"password"}');
-dataRequest.onreadystatechange = function() {
-	if (dataRequest.readyState === DONE) {
-		if (dataRequest.status === OK) {
-			console.log(dataRequest.responseText);
-			let parsedResponse = JSON.parse(dataRequest.responseText);
-			console.log(parsedResponse);
+function getData() {
+	var dataRequest = new XMLHttpRequest();
+	dataRequest.open('Get', './php/getData.php');
+	dataRequest.send();
+	//loginRequest.send('{"e":"email","pw":"password"}');
+	dataRequest.onreadystatechange = function() {
+		if (dataRequest.readyState === DONE) {
+			if (dataRequest.status === OK) {
+				console.log(dataRequest.responseText);
+				let parsedResponse = JSON.parse(dataRequest.responseText);
+				console.log(parsedResponse);
 
-			var subjects = [];
+				var subjects = [];
 
-			for (var i in parsedResponse.subjects) {
-				var x = 0;
-				for (var j in subjects) {
-					if (parsedResponse.subjects[i].id == subjects[j].id) {
-						x++;
-					}
-				}
-				if (x == 0) {
-					subjects[subjects.length] = {
-						id: parsedResponse.subjects[i].id,
-						lvnr: parsedResponse.subjects[i].lnvr,
-						title: parsedResponse.subjects[i].title,
-						groups_required: parsedResponse.subjects[i].groups_required,
-						lessons: [
-							{
-								hours: parsedResponse.subjects[i].hours,
-								short: parsedResponse.subjects[i].short,
-								group: parsedResponse.subjects[i].group
-							}
-						]
-					};
-				} else {
+				for (var i in parsedResponse.subjects) {
+					var x = 0;
 					for (var j in subjects) {
 						if (parsedResponse.subjects[i].id == subjects[j].id) {
-							subjects[j].lessons[subjects[j].lessons.length] = {
-								hours: parsedResponse.subjects[i].hours,
-								short: parsedResponse.subjects[i].short,
-								group: parsedResponse.subjects[i].group
-							};
+							x++;
+						}
+					}
+					if (x == 0) {
+						subjects[subjects.length] = {
+							id: parsedResponse.subjects[i].id,
+							lvnr: parsedResponse.subjects[i].lnvr,
+							title: parsedResponse.subjects[i].title,
+							groups_required: parsedResponse.subjects[i].groups_required,
+							lessons: [
+								{
+									hours: parsedResponse.subjects[i].hours,
+									short: parsedResponse.subjects[i].short,
+									group: parsedResponse.subjects[i].group
+								}
+							]
+						};
+					} else {
+						for (var j in subjects) {
+							if (parsedResponse.subjects[i].id == subjects[j].id) {
+								subjects[j].lessons[subjects[j].lessons.length] = {
+									hours: parsedResponse.subjects[i].hours,
+									short: parsedResponse.subjects[i].short,
+									group: parsedResponse.subjects[i].group
+								};
+							}
 						}
 					}
 				}
-			}
 
-			console.log(subjects);
+				console.log(subjects);
 
-			for (var i in subjects) {
-				appendSubject(document.getElementById('subjects'), subjects[i]);
+				for (var i in subjects) {
+					appendSubject(document.getElementById('subjects'), subjects[i]);
+				}
+			} else {
+				console.log('Error: ' + dataRequest.status); // An error occurred during the request.
 			}
-		} else {
-			console.log('Error: ' + dataRequest.status); // An error occurred during the request.
 		}
-	}
-};
+	};
+}
+
+getData();
 
 function appendSubject(element, subject) {
 	element.insertAdjacentHTML('beforeend', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><div class="half"><b>Subject: </b><span class="name">' + subject.title + '</span></div><div class="half"><b>Criteria: </b><span class="timecriteria"> 5 </span></div></div><div class="lessonContainer"><div class="lesson" id="subject' + subject.id + '"></div><button type="button" name="button" onclick="addLesson('+subject.id+');"> + </button></div></div>');
