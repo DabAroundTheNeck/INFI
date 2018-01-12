@@ -127,13 +127,17 @@ function getData() {
 
 getData();
 
+function deleteSubject() {
+	
+}
+
 function appendSubject(element, subject) {
-	element.insertAdjacentHTML('beforeend', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><div class="half"><b>Subject: </b><span class="name">' + subject.title + '</span></div><div class="half"><b>Criteria: </b><span class="timecriteria"> 5 </span></div></div><div class="lessonContainer"><div class="lesson" id="subject' + subject.id + '"></div><button type="button" name="button" onclick="addLesson('+subject.id+');"> + </button></div></div>');
+	element.insertAdjacentHTML('beforeEnd', '<div class="subject"><div class="info"><button type="button" name="button" class="closeButton">x</button><b>Subject: </b><span class="name">' + subject.title + '</span><br/><b>Criteria: </b><span class="timecriteria"> 5 </span></div><div class="lessonContainer"><div class="lessons" id="subject' + subject.id + '"></div><button type="button" name="button" onclick="addLesson('+subject.id+');"> + </button></div></div>');
 	for (var i = 0; i < subject.lessons.length; i++) {
 		appendLesson(document.getElementById('subject' + subject.id), subject.lessons[i]);
 	}
 }
 
 function appendLesson(element, lesson) {
-	element.insertAdjacentHTML('beforeend', '<div class="lesson centered"><div class="row teacherrow"><span class="teacher">' + lesson.short + '</span></div><div class="row"><span class="half">Group </span><span class="half">' + lesson.group + '</span</div></div>');
+	element.insertAdjacentHTML('beforeEnd', '<div class="lesson centered block"><div class="row teacherrow"><span class="teacher">'+ lesson.short +'</span></div><div class="row"><span class="half">Group</span><span class="half">' + lesson.group + '</span></div></div>');
 }
