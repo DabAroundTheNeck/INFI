@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `INFI`.`subjects` (
   `lvnr` CHAR(100) NOT NULL, /*Lehrveranstaltungsnummer*/
   `title` CHAR(100) NOT NULL, /*Titel der Veranstaltungen*/
   `groups_required` INT NOT NULL, /*Anzahl der insgesamt benötigten Gruppen*/
+  `active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `INFI`.`teachers` (
   `f_name` CHAR(100) NOT NULL, /*Vorname*/
   `l_name` CHAR(100) NOT NULL, /*Nachname*/
   `short` CHAR(100) NOT NULL, /*Kürzel*/
+  `active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -56,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `INFI`.`lessons` (
   `hours` INT NOT NULL, /*Anzahl der Stunden*/
   `group` CHAR(100) NOT NULL, /*Name der Gruppe*/
   `id_subjects` INT NOT NULL, /*Referenzierte Veranstaltung*/
+  `active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_lessons_teachers1_idx` (`id_teachers` ASC),
   INDEX `fk_lessons_subjects1_idx` (`id_subjects` ASC),
