@@ -49,15 +49,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lessonContainer>button {
-    display: inline-block;
     font-family: 'Roboto', sans-serif;
     border: 0;
     color: white;
     background-color: #0a3085;
     border-radius: 100%;
-    width: 2.5em;
-    height: 2.5em;
+    width: 2em;
+    height: 2em;
     font-size: 2em;
+    float: right;
+    position: absolute;
+    right: -66px;
+    top: 0px;
 }
 
 button:hover {
@@ -75,17 +78,20 @@ button:hover {
 }
 
 .subject {
+    height: 75px;
     background-color: #ffffff;
     margin-bottom: 1em;
 }
 
 .subject .info {
+    height: inherit;
     width: 300px;
     display: inline-block;
     color: white;
     background-color: #0a3085;
     padding: 0.3em;
     position: relative;
+    vertical-align: top;
 }
 
 .subject .info .half {
@@ -98,22 +104,24 @@ button:hover {
     font-family: 'Roboto', sans-serif;
 }
 
-.subject .info .half .timecriteria {}
-
 .subject .lessonContainer {
     padding: 0.3em;
     display: inline-block;
+    position: relative;
 }
 
 .lesson {
     width: 10em;
-    display: flex;
-    float: left;
 }
 
-.lesson>div {
-    display: block;
-    position: relative;
+.block {
+    border: 1px solid black;
+    display: inline-block;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: auto;
 }
 
 .row {
