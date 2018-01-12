@@ -25,11 +25,12 @@
         $lessons_stmnt->bindParam(':group', $post_group);
 
         $lessons_stmnt->execute();
+        $short = $lessons_stmnt->fetch();
         $lessons_stmnt->closeCursor();
 
-
         $response = array(
-          'status' => SUCCESS
+          'status' => SUCCESS,
+          'short' => $short
         );
 
         $pdo->commit();

@@ -36,13 +36,16 @@ INSERT INTO `subjects` (`lvnr`, `title`, `groups_required`) VALUES (lvnr, title,
 
 
 DROP PROCEDURE if exists `insertLessons`;
+DELIMITER $$
 CREATE PROCEDURE `insertLessons`(
   IN `id_teachers` INT(11),
   IN `hours` INT(11),
   IN `groups` CHAR(100),
   IN `id_subjects` INT(11)
 )
-    NOT DETERMINISTIC
-    MODIFIES SQL DATA
-    SQL SECURITY DEFINER
-INSERT INTO `lessons` (`id_teachers`, `hours`, `group`, `id_subjects`) VALUES (id_teachers, hours, groups, id_subjects)
+Begin
+	INSERT INTO `lessons` (`id_teachers`, `hours`, `group`, `id_subjects`) VALUES (id_teachers, hours, groups, id_subjects);
+    SELECT `short` FROM `teachers`
+		WHERE id = `id_teachers`;
+End$$
+DELIMITER ;
